@@ -1,0 +1,49 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "British Council",
+    "classifications": ["Common", "Seed", "API"],
+    "identity": "BC.Seed.Template",
+    "name": "BC Seed API",
+    "shortName": "bcseedapi",
+    "preferNameDirectory": true,
+    "sourceName": "BC.Seed",
+    "tags": {
+        "language": "C#",
+        "type": "solution"
+    },
+    "defaultName": "Azure Functions F#",
+    "symbols": {
+        "schemaForPlugins": {
+            "type": "parameter",
+            "defaultValue": "seed_schema",
+            "replaces": "seed_schema"
+        },
+        "connectionStringName": {
+            "type": "parameter",
+            "defaultValue": "SeedDatabase",
+            "replaces": "SeedDatabase"
+        },
+        "connectionString": {
+            "type": "parameter",
+            "defaultValue": "Data Source=(local);Initial Catalog=SEED_DB;Connection Timeout=3600;Integrated Security=true;MultipleActiveResultSets=True;Timeout=200;",
+            "replaces": "Data Source=(local);Initial Catalog=SEED_DB;Connection Timeout=3600;Integrated Security=true;MultipleActiveResultSets=True;Timeout=200;"
+        },
+        "messagesNamespace": {
+            "type": "parameter",
+            "defaultValue": "seed_contracts",
+            "replaces": "seed_contracts"
+        }
+    },
+    "postActions": [{
+        "description ": "Runs the fix_nuspecs powershell script.",
+        "manualInstructions": [{
+            "text": "Run 'fix_nuspecs.ps1'"
+        }],
+        "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
+        "args": {
+            "executable": "powershell",
+            "args": "-File fix_nuspecs.ps1"
+        },
+        "continueOnError": true
+    }]
+}
