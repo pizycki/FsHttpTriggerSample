@@ -4,7 +4,7 @@ This sample shows how to build an Azure Function that processes HTTP requests us
 
 ## Prerequisites
 
-This solution was built using a Windows PC but should work on Mac and Linux.
+This solution was built using a Windows PC, but should work on Mac and Linux.
 
 - [.NET SDK (2.x or 3.x)](https://dotnet.microsoft.com/download/dotnet-core)
 - [Node.js](https://nodejs.org/en/download/)
@@ -12,23 +12,9 @@ This solution was built using a Windows PC but should work on Mac and Linux.
 
 ## Run the Function Locally
 
-Build the project by using the `build` command inside the *FsHttpTriggerSample* project directory.
+To build or start application, use Cake script
 
-```bash
-dotnet build
-```
-
-Then, navigate to the output directory
-
-```bash
-cd bin\Debug\netstandard2.0
-```
-
-Use the Azure Functions Core Tools to start the Azure Functions host locally.
-
-```bash
-func host start
-```
+`PS> &.\build.ps1 -t start`
 
 Once the host is initialized, the function is available at the following endpoint `http://localhost:7071/api/Greet`.
 

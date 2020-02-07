@@ -16,18 +16,14 @@ var build = Task("Build")
 
 var start = Task("Start")
     .IsDependentOn(build)
-    .Does(() => {
-        var ps = new ProcessSettings {
-            Arguments = "host start",
-            WorkingDirectory = "C:/dev/FsHttpTriggerSample/FsHttpTriggerSample/bin/" + configuration + "/netstandard2.0",
-            Silent = true
-        };
-        using(var process = StartAndReturnProcess("func.cmd", ps))
-        {
-            process.WaitForExit();
-            // This should output 0 as valid arguments supplied
-            Information("Exit code: {0}", process.GetExitCode());
-        }
+    .Does(async () => {
+        await System.Threading.Tasks.Task.Run(() => {
+            var exitCodeWithArgument = StartProcess("powershell", new ProcessSettings {
+                Arguments = "func host start",
+                WorkingDirectory = "./FsHttpTriggerSample/bin/" + configuration + "/netstandard2.0"
+            });
+            if (exitCodeWithArgument != 0) throw new Exception ("Failed to host functions!");
+        });
     });
 
 RunTarget(target);
