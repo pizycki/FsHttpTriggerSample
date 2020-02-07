@@ -1,0 +1,7 @@
+POST http://localhost:7071/api/Greet
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "Pawel Izycki"
+}
