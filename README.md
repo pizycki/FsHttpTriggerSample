@@ -20,13 +20,9 @@ Once the host is initialized, the function is available at the following endpoin
 
 ## Test the function
 
-Using a REST client like Postman or Insomnia, make a POST request to `http://localhost:7071/api/Greet` with the following body. Feel free to replace the name with your own.
+Make a HTTP POST request to `http://localhost:7071/api/Greet`.
 
-```json
-{
-    "Name": "Luis"
-}
-```
+You can compose request manually with `curl` or use `greet.http` file.
 
 If successful, the response should look similar to the following output.
 
